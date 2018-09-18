@@ -39,17 +39,15 @@ SingleComponentGaussianBlurMonoFilter* SingleComponentGaussianBlurMonoFilter::cr
 
 std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedVertexShaderString(int radius, float sigma)
 {
-    if (radius < 1 || sigma <= 0.0)
-    {
+    if (radius < 1 || sigma <= 0.0) {
         return kDefaultVertexShader;
     }
     
     // 1. generate the normal Gaussian weights for a given sigma
-    GLfloat* standardGaussianWeights = new GLfloat[radius + 1];
+    GLfloat standardGaussianWeights[radius + 1];
     GLfloat sumOfWeights = 0.0;
     
-    for (int i = 0; i < radius + 1; ++i)
-    {
+    for (int i = 0; i < radius + 1; ++i) {
         standardGaussianWeights[i] = (1.0 / sqrt(2.0 * M_PI * pow(sigma, 2.0))) * exp(-pow(i, 2.0) / (2.0 * pow(sigma, 2.0)));
         if (i == 0)
             sumOfWeights += standardGaussianWeights[i];
@@ -58,17 +56,15 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedVertexShade
     }
     
     // 2. normalize these weights to prevent the clipping of the Gaussian curve at the end of the discrete samples from reducing luminance
-    for (int i = 0; i < radius + 1; ++i)
-    {
+    for (int i = 0; i < radius + 1; ++i) {
         standardGaussianWeights[i] = standardGaussianWeights[i] / sumOfWeights;
     }
     
     // 3. From these weights we calculate the offsets to read interpolated values from
     int numberOfOptimizedOffsets = MIN(radius / 2 + (radius % 2), 7);
-    GLfloat* optimizedGaussianOffsets = new GLfloat[numberOfOptimizedOffsets];
+    GLfloat optimizedGaussianOffsets[numberOfOptimizedOffsets];
     
-    for (int i = 0; i < numberOfOptimizedOffsets; ++i)
-    {
+    for (int i = 0; i < numberOfOptimizedOffsets; ++i) {
         GLfloat firstWeight = standardGaussianWeights[i * 2 + 1];
         GLfloat secondWeight = standardGaussianWeights[i * 2 + 2];
         
@@ -103,24 +99,20 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedVertexShade
     
     shaderStr += "}\n";
     
-    delete[] standardGaussianWeights;
-    delete[] optimizedGaussianOffsets;
-    
     return shaderStr;
 }
 
 std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentShaderString(int radius, float sigma)
 {
-    if (radius < 1 || sigma <= 0.0)
-    {
+    if (radius < 1 || sigma <= 0.0) {
         return kDefaultFragmentShader;
     }
     
     // 1. generate the normal Gaussian weights for a given sigma
-    GLfloat* standardGaussianWeights = new float[radius + 1];
+    GLfloat standardGaussianWeights[radius + 1];
     GLfloat sumOfWeights = 0.0;
-    for (int i = 0; i < radius + 1; ++i)
-    {
+
+    for (int i = 0; i < radius + 1; ++i) {
         standardGaussianWeights[i] = (1.0 / sqrt(2.0 * M_PI * pow(sigma, 2.0))) * exp(-pow(i, 2.0) / (2.0 * pow(sigma, 2.0)));
         if (i == 0)
             sumOfWeights += standardGaussianWeights[i];
@@ -129,8 +121,7 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     }
     
     // 2. normalize these weights to prevent the clipping of the Gaussian curve at the end of the discrete samples from reducing luminance
-    for (int i = 0; i < radius + 1; ++i)
-    {
+    for (int i = 0; i < radius + 1; ++i) {
         standardGaussianWeights[i] = standardGaussianWeights[i] / sumOfWeights;
     }
     
@@ -159,12 +150,10 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     }
     
     // If the number of required samples exceeds the amount we can pass in via varyings, we have to do dependent texture reads in the fragment shader
-    if (trueNumberOfOptimizedOffsets > numberOfOptimizedOffsets)
-    {
+    if (trueNumberOfOptimizedOffsets > numberOfOptimizedOffsets) {
         shaderStr += str_format("highp vec2 texelSpacing = vec2(texelWidthOffset, texelHeightOffset);\n");
         
-        for (int i = numberOfOptimizedOffsets; i < trueNumberOfOptimizedOffsets; i++)
-        {
+        for (int i = numberOfOptimizedOffsets; i < trueNumberOfOptimizedOffsets; i++) {
             GLfloat firstWeight = standardGaussianWeights[i * 2 + 1];
             GLfloat secondWeight = standardGaussianWeights[i * 2 + 2];
             
@@ -181,7 +170,6 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     "gl_FragColor = vec4(sum, sum, sum, 1.0);\n\
     }";
     
-    delete[] standardGaussianWeights; standardGaussianWeights = 0;
     return shaderStr;
 }
 

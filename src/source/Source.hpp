@@ -59,7 +59,7 @@ public:
     virtual bool proceed(bool bUpdateTargets = true);
     virtual void updateTargets(float frameTime);
 
-    virtual unsigned char* captureAProcessedFrameData(Filter* upToFilter, int width = 0, int height = 0);
+    virtual uint8_t* captureAProcessedFrameData(Filter* upToFilter, int width = 0, int height = 0);
     
 protected:
     Framebuffer* _framebuffer;

@@ -256,7 +256,7 @@ void Filter::update(float frameTime) {
         proceed(false);
 
         _framebuffer->active();
-        Context::getInstance()->capturedFrameData = new unsigned char[captureWidth * captureHeight * 4];
+        Context::getInstance()->capturedFrameData = new uint8_t[captureWidth * captureHeight * 4];
         CHECK_GL(glReadPixels(0, 0, captureWidth, captureHeight, GL_RGBA, GL_UNSIGNED_BYTE, Context::getInstance()->capturedFrameData));
         _framebuffer->inactive();
     } else {

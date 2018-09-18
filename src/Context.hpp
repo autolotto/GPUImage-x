@@ -59,7 +59,7 @@ public:
     // used for capturing a processed frame data
     bool isCapturingFrame;
     Filter* captureUpToFilter;
-    unsigned char* capturedFrameData;
+    uint8_t* capturedFrameData;
     int captureWidth;
     int captureHeight;
 

@@ -115,7 +115,7 @@ void Source::updateTargets(float frameTime) {
     }
 }
 
-unsigned char* Source::captureAProcessedFrameData(Filter* upToFilter, int width/* = 0*/, int height/* = 0*/) {
+uint8_t* Source::captureAProcessedFrameData(Filter* upToFilter, int width/* = 0*/, int height/* = 0*/) {
     if (Context::getInstance()->isCapturingFrame) return 0 ;
 
     if (width <= 0 || height <= 0) {
@@ -130,7 +130,7 @@ unsigned char* Source::captureAProcessedFrameData(Filter* upToFilter, int width/
     Context::getInstance()->captureUpToFilter = upToFilter;
 
     proceed(true);
-    unsigned char* processedFrameData = Context::getInstance()->capturedFrameData;
+    uint8_t* processedFrameData = Context::getInstance()->capturedFrameData;
 
     Context::getInstance()->capturedFrameData = 0;
     Context::getInstance()->captureWidth = 0;

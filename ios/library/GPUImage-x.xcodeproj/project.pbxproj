@@ -23,7 +23,7 @@
 		3C5FF5F01E7055FE00BF0874 /* Framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5DF1E7055FE00BF0874 /* Framebuffer.cpp */; };
 		3C5FF5F11E7055FE00BF0874 /* FramebufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E11E7055FE00BF0874 /* FramebufferCache.cpp */; };
 		3C5FF5F21E7055FE00BF0874 /* GLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E31E7055FE00BF0874 /* GLProgram.cpp */; };
-		3C5FF5F41E7055FE00BF0874 /* math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E71E7055FE00BF0874 /* math.cpp */; };
+		3C5FF5F41E7055FE00BF0874 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E71E7055FE00BF0874 /* Vector2.cpp */; };
 		3C5FF5F51E7055FE00BF0874 /* Ref.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E91E7055FE00BF0874 /* Ref.cpp */; };
 		3C5FF5F61E7055FE00BF0874 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5ED1E7055FE00BF0874 /* util.cpp */; };
 		3C74D7691EA119600074FEF5 /* HalftoneFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C74D7671EA119600074FEF5 /* HalftoneFilter.cpp */; };
@@ -68,6 +68,8 @@
 		3CAE3C3D1EA8F7D800757974 /* GlassSphereFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE3C3B1EA8F7D800757974 /* GlassSphereFilter.cpp */; };
 		3CC8ECF61E894FA300ADD376 /* SmoothToonFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8ECF41E894FA300ADD376 /* SmoothToonFilter.cpp */; };
 		3CFE65271E8C1A5400E7C5CF /* NonMaximumSuppressionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CFE65251E8C1A5400E7C5CF /* NonMaximumSuppressionFilter.cpp */; };
+		F6A1C3792151BFAB001C1ADD /* Matrix3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A1C3772151BFAB001C1ADD /* Matrix3.cpp */; };
+		F6A1C37C2151C1A1001C1ADD /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6A1C37A2151C1A1001C1ADD /* Matrix4.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,7 +119,7 @@
 		3C5FF5E31E7055FE00BF0874 /* GLProgram.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = GLProgram.cpp; sourceTree = "<group>"; };
 		3C5FF5E41E7055FE00BF0874 /* GLProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLProgram.hpp; sourceTree = "<group>"; };
 		3C5FF5E61E7055FE00BF0874 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
-		3C5FF5E71E7055FE00BF0874 /* math.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = math.cpp; sourceTree = "<group>"; };
+		3C5FF5E71E7055FE00BF0874 /* Vector2.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = Vector2.cpp; sourceTree = "<group>"; };
 		3C5FF5E81E7055FE00BF0874 /* math.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = math.hpp; sourceTree = "<group>"; };
 		3C5FF5E91E7055FE00BF0874 /* Ref.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = Ref.cpp; sourceTree = "<group>"; };
 		3C5FF5EA1E7055FE00BF0874 /* Ref.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ref.hpp; sourceTree = "<group>"; };
@@ -200,6 +202,11 @@
 		3CFDD56E1D7AB2F500E37EA3 /* libGPUImage-x iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libGPUImage-x iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CFE65251E8C1A5400E7C5CF /* NonMaximumSuppressionFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = NonMaximumSuppressionFilter.cpp; path = filter/NonMaximumSuppressionFilter.cpp; sourceTree = "<group>"; };
 		3CFE65261E8C1A5400E7C5CF /* NonMaximumSuppressionFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NonMaximumSuppressionFilter.hpp; path = filter/NonMaximumSuppressionFilter.hpp; sourceTree = "<group>"; };
+		F6A1C3762151BEBB001C1ADD /* Vector2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Vector2.hpp; path = ../../../../src/Math/Vector2.hpp; sourceTree = "<group>"; };
+		F6A1C3772151BFAB001C1ADD /* Matrix3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix3.cpp; sourceTree = "<group>"; };
+		F6A1C3782151BFAB001C1ADD /* Matrix3.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix3.hpp; sourceTree = "<group>"; };
+		F6A1C37A2151C1A1001C1ADD /* Matrix4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4.cpp; sourceTree = "<group>"; };
+		F6A1C37B2151C1A1001C1ADD /* Matrix4.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix4.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,17 +222,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A71D25021502A7500ADDA5A /* Math */ = {
+		1A71D25021502A7500ADDA5A /* math */ = {
 			isa = PBXGroup;
 			children = (
-				3C5FF5E71E7055FE00BF0874 /* math.cpp */,
-				3C5FF5E81E7055FE00BF0874 /* math.hpp */,
+				F6A1C3772151BFAB001C1ADD /* Matrix3.cpp */,
+				F6A1C3782151BFAB001C1ADD /* Matrix3.hpp */,
+				F6A1C37A2151C1A1001C1ADD /* Matrix4.cpp */,
+				F6A1C37B2151C1A1001C1ADD /* Matrix4.hpp */,
+				3C5FF5E71E7055FE00BF0874 /* Vector2.cpp */,
+				F6A1C3762151BEBB001C1ADD /* Vector2.hpp */,
 				1A71D25121502A8B00ADDA5A /* Vector3.cpp */,
 				1A71D25221502A8B00ADDA5A /* Vector3.hpp */,
 				1A71D25521502D1500ADDA5A /* Vector4.cpp */,
 				1A71D25421502D1500ADDA5A /* Vector4.hpp */,
 			);
-			path = Math;
+			path = math;
 			sourceTree = "<group>";
 		};
 		3C50030A1E7ADC58006A49F9 /* iOS */ = {
@@ -383,6 +394,7 @@
 				3C938F991E74391D00EE753C /* target */,
 				3C938F8C1E74358A00EE753C /* source */,
 				3C938F5B1E74356F00EE753C /* filter */,
+				1A71D25021502A7500ADDA5A /* math */,
 				3C5FF5DC1E7055FE00BF0874 /* Context.cpp */,
 				3C5FF5DD1E7055FE00BF0874 /* Context.hpp */,
 				3C5FF5DF1E7055FE00BF0874 /* Framebuffer.cpp */,
@@ -392,7 +404,7 @@
 				3C5FF5E31E7055FE00BF0874 /* GLProgram.cpp */,
 				3C5FF5E41E7055FE00BF0874 /* GLProgram.hpp */,
 				3C5FF5E61E7055FE00BF0874 /* macros.h */,
-				1A71D25021502A7500ADDA5A /* Math */,
+				3C5FF5E81E7055FE00BF0874 /* math.hpp */,
 				3C5FF5E91E7055FE00BF0874 /* Ref.cpp */,
 				3C5FF5EA1E7055FE00BF0874 /* Ref.hpp */,
 				3C5FF5ED1E7055FE00BF0874 /* util.cpp */,
@@ -458,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A1C3792151BFAB001C1ADD /* Matrix3.cpp in Sources */,
 				3C938F961E74391000EE753C /* Source.hpp in Sources */,
 				3CA677A91E86DC5300295EEC /* SketchFilter.cpp in Sources */,
 				3C4151641E8D45FE00ED6F6D /* SingleComponentGaussianBlurMonoFilter.cpp in Sources */,
@@ -503,11 +516,12 @@
 				3C5003131E7ADCCD006A49F9 /* IOSTarget.cpp in Sources */,
 				3C74D76C1EA121300074FEF5 /* CrosshatchFilter.cpp in Sources */,
 				3C938F891E74357C00EE753C /* HSBFilter.cpp in Sources */,
-				3C5FF5F41E7055FE00BF0874 /* math.cpp in Sources */,
+				3C5FF5F41E7055FE00BF0874 /* Vector2.cpp in Sources */,
 				3C21FAD01E8A9719007DFE11 /* PosterizeFilter.cpp in Sources */,
 				3CA677B61E88034100295EEC /* ContrastFilter.cpp in Sources */,
 				3CA677B01E8769A900295EEC /* PixellationFilter.cpp in Sources */,
 				3C21FAD31E8A9D47007DFE11 /* LuminanceRangeFilter.cpp in Sources */,
+				F6A1C37C2151C1A1001C1ADD /* Matrix4.cpp in Sources */,
 				3CA677AD1E86DF8E00295EEC /* ToonFilter.cpp in Sources */,
 				3CC8ECF61E894FA300ADD376 /* SmoothToonFilter.cpp in Sources */,
 				3C5FF5F61E7055FE00BF0874 /* util.cpp in Sources */,

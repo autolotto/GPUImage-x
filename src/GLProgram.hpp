@@ -20,7 +20,8 @@
 #define Shader_hpp
 
 #include "macros.h"
-#include "string"
+#include "math.hpp"
+
 #if PLATFORM == PLATFORM_ANDROID
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
@@ -28,8 +29,9 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #endif
+
+#include <string>
 #include <vector>
-#include "math.hpp"
 
 NS_GI_BEGIN
 
@@ -66,7 +68,6 @@ private:
     GLuint _program;
     bool _initWithShaderString(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 };
-
 
 NS_GI_END
 

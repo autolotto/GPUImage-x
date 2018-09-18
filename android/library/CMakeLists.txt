@@ -8,8 +8,12 @@ add_library( GPUImage-x
              src/main/cpp/Framebuffer.cpp
              src/main/cpp/GLProgram.cpp
              src/main/cpp/Context.cpp
-             src/main/cpp/math.cpp
              src/main/cpp/GPUImagexJNI.cpp
+             src/main/cpp/math/Matrix3.cpp
+             src/main/cpp/math/Matrix4.cpp
+             src/main/cpp/math/Vector2.cpp
+             src/main/cpp/math/Vector3.cpp
+             src/main/cpp/math/Vector4.cpp
              src/main/cpp/source/Source.cpp
              src/main/cpp/source/SourceImage.cpp
              src/main/cpp/source/SourceCamera.cpp

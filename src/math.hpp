@@ -16,27 +16,13 @@
  * limitations under the License.
  */
 
-#ifndef Convolution3x3Filter_hpp
-#define Convolution3x3Filter_hpp
+#ifndef math_hpp
+#define math_hpp
 
-#include "../macros.h"
-#include "../math.hpp"
-#include "NearbySampling3x3Filter.hpp"
+#include "math/Matrix3.hpp"
+#include "math/Matrix4.hpp"
+#include "math/Vector2.hpp"
+#include "math/Vector3.hpp"
+#include "math/Vector4.hpp"
 
-NS_GI_BEGIN
-
-class Convolution3x3Filter : public NearbySampling3x3Filter {
-public:
-    virtual bool init();
-    virtual bool proceed(bool bUpdateTargets = true) override;
-protected:
-    Convolution3x3Filter() {};
-    
-    
-    //The convolution kernel is a 3x3 matrix of values to apply to the pixel and its 8 surrounding pixels.
-    Matrix3 _convolutionKernel;
-};
-
-NS_GI_END
-
-#endif /* Convolution3x3Filter_hpp */
+#endif /* math_hpp */

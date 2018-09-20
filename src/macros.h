@@ -19,11 +19,11 @@
 #ifndef macros_h
 #define macros_h
 
-#define PLATFORM_UNKNOW 0
+#define PLATFORM_UNKNOWN 0
 #define PLATFORM_ANDROID 1
 #define PLATFORM_IOS 2
 
-#define PLATFORM PLATFORM_UNKNOW
+#define PLATFORM PLATFORM_UNKNOWN
 
 #if defined(__ANDROID__) || defined(ANDROID)
     #undef  PLATFORM

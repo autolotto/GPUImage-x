@@ -21,13 +21,13 @@
 
 #include "../macros.h"
 #include "../target/Target.hpp"
-#include <map>
-#include <functional>
-#include "../target/Target.hpp"
 
 #if PLATFORM == PLATFORM_IOS
-#import "GPUImageTarget.h"
+#import "../target/iOS/GPUImageTarget.h"
 #endif
+
+#include <map>
+#include <functional>
 
 NS_GI_BEGIN
 

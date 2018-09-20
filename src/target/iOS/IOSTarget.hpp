@@ -21,7 +21,7 @@
 #ifndef IOSTarget_hpp
 #define IOSTarget_hpp
 
-#include "Target.hpp"
+#include "../Target.hpp"
 #import "GPUImageTarget.h"
 
 NS_GI_BEGIN

@@ -19,8 +19,9 @@
 #if PLATFORM == PLATFORM_IOS
 
 #import <UIKit/UIKit.h>
-#include "Framebuffer.hpp"
-#include "Target.hpp"
+
+#include "../../Framebuffer.hpp"
+#include "../Target.hpp"
 
 @protocol GPUImageTarget <NSObject>
 

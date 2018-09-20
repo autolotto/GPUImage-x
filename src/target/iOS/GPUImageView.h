@@ -19,8 +19,9 @@
 #if PLATFORM == PLATFORM_IOS
 
 #import <UIKit/UIKit.h>
+
+#import "../TargetView.h"
 #import "GPUImageTarget.h"
-#include "TargetView.h"
 
 @interface GPUImageView : UIView <GPUImageTarget>
 

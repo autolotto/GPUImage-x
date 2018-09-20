@@ -33,7 +33,11 @@ TextureAttributes Framebuffer::defaultTextureAttribures = {
     .wrapS = GL_CLAMP_TO_EDGE,
     .wrapT = GL_CLAMP_TO_EDGE,
     .internalFormat = GL_RGBA,
+#if PLATFORM == PLATFORM_IOS
     .format = GL_BGRA,
+#elif PLATFORM == PLATFORM_ANDROID
+    .format = GL_RGBA,
+#endif
     .type = GL_UNSIGNED_BYTE
 };
 

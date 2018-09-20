@@ -49,6 +49,14 @@ public class GPUImageSourceCamera extends GPUImageSource implements Camera.Previ
         });
     }
 
+    public Camera.Parameters getCameraParameters() {
+        if (mCamera == null) {
+            return null;
+        }
+
+        return mCamera.getParameters();
+    }
+
     @Override
     public void onPreviewFrame(final byte[] data, Camera camera) {
         final Camera.Size previewSize = camera.getParameters().getPreviewSize();

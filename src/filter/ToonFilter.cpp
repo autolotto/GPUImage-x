@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(ToonFilter)
 
+DEFINE_FILTER_CREATE_METHOD(ToonFilter)
+
 const std::string kToonFragmentShaderString = SHADER_STRING
 (
  precision mediump float;
@@ -63,17 +65,7 @@ const std::string kToonFragmentShaderString = SHADER_STRING
      
      gl_FragColor = vec4(posterizedImageColor * thresholdTest, color.a);
  }
- );
-
-
-ToonFilter* ToonFilter::create() {
-    ToonFilter* ret = new (std::nothrow) ToonFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool ToonFilter::init() {
     if (!initWithFragmentShaderString(kToonFragmentShaderString)) return false;

@@ -182,6 +182,8 @@ void BilateralMonoFilter::setDistanceNormalizationFactor(float value) {
 
 REGISTER_FILTER_CLASS(BilateralFilter)
 
+DEFINE_FILTER_CREATE_METHOD(BilateralFilter)
+
 BilateralFilter::BilateralFilter()
 :_hBlurFilter(0)
 ,_vBlurFilter(0)
@@ -199,15 +201,6 @@ BilateralFilter::~BilateralFilter() {
         _vBlurFilter = 0;
     }
     
-}
-
-BilateralFilter* BilateralFilter::create() {
-    BilateralFilter* ret = new (std::nothrow) BilateralFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
 }
 
 bool BilateralFilter::init() {

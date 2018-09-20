@@ -23,6 +23,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(HueFilter)
 
+DEFINE_FILTER_CREATE_METHOD(HueFilter)
+
 // Adapted from http://stackoverflow.com/questions/9234724/how-to-change-hue-of-a-texture-with-glsl - see for code and discussion
 const std::string kHueFragmentShaderString = SHADER_STRING
 (
@@ -68,16 +70,6 @@ const std::string kHueFragmentShaderString = SHADER_STRING
         gl_FragColor = color;
     }
 );
-
-
-HueFilter* HueFilter::create() {
-    HueFilter* ret = new (std::nothrow) HueFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool HueFilter::init() {
     if (!initWithFragmentShaderString(kHueFragmentShaderString)) return false;

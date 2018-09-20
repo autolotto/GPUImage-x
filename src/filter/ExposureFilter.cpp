@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(ExposureFilter)
 
+DEFINE_FILTER_CREATE_METHOD(ExposureFilter)
+
 const std::string kExposureFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -34,16 +36,6 @@ const std::string kExposureFragmentShaderString = SHADER_STRING
         gl_FragColor = vec4(color.rgb * pow(2.0, exposure), color.a);
     }
 );
-
-
-ExposureFilter* ExposureFilter::create() {
-    ExposureFilter* ret = new (std::nothrow) ExposureFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool ExposureFilter::init() {
     if (!initWithFragmentShaderString(kExposureFragmentShaderString)) return false;

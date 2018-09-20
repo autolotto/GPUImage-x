@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(CannyEdgeDetectionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(CannyEdgeDetectionFilter)
+
 CannyEdgeDetectionFilter::CannyEdgeDetectionFilter()
 :_grayscaleFilter(0)
 ,_blurFilter(0)
@@ -52,15 +54,6 @@ CannyEdgeDetectionFilter::~CannyEdgeDetectionFilter() {
         _weakPixelInclusionFilter->release();
         _weakPixelInclusionFilter = 0;
     }
-}
-
-CannyEdgeDetectionFilter* CannyEdgeDetectionFilter::create() {
-    CannyEdgeDetectionFilter* ret = new (std::nothrow) CannyEdgeDetectionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
 }
 
 bool CannyEdgeDetectionFilter::init() {

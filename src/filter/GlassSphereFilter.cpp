@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(GlassSphereFilter)
 
+DEFINE_FILTER_CREATE_METHOD(GlassSphereFilter)
+
 const std::string kGlassSphereFragmentShaderString = SHADER_STRING
 (
  
@@ -65,18 +67,7 @@ const std::string kGlassSphereFragmentShaderString = SHADER_STRING
      
      gl_FragColor = vec4(finalSphereColor, 1.0) * checkForPresenceWithinSphere;
  }
- );
-
-
-
-GlassSphereFilter* GlassSphereFilter::create() {
-    GlassSphereFilter* ret = new (std::nothrow) GlassSphereFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool GlassSphereFilter::init() {
     if (!initWithFragmentShaderString(kGlassSphereFragmentShaderString)) return false;

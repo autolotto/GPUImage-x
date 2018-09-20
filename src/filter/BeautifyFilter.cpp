@@ -97,6 +97,8 @@ private:
 
 REGISTER_FILTER_CLASS(BeautifyFilter)
 
+DEFINE_FILTER_CREATE_METHOD(BeautifyFilter)
+
 BeautifyFilter::BeautifyFilter()
 :_bilateralFilter(0)
 ,_cannyEdgeDetectionFilter(0)
@@ -122,15 +124,6 @@ BeautifyFilter::~BeautifyFilter() {
         _hsbFilter->release();
         _hsbFilter = 0;
     }
-}
-
-BeautifyFilter* BeautifyFilter::create() {
-    BeautifyFilter* ret = new (std::nothrow) BeautifyFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
 }
 
 bool BeautifyFilter::init() {

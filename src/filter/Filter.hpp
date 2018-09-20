@@ -154,6 +154,16 @@ private:
     static std::map<std::string, std::function<Filter*()>> _filterFactories;
 };
 
+#define DEFINE_FILTER_CREATE_METHOD(className) \
+className* className::create() { \
+    className* ret = new (std::nothrow) className(); \
+    if (ret && !ret->init()) { \
+        delete ret; \
+        ret = 0; \
+    } \
+    return ret; \
+}
+
 #if PLATFORM == PLATFORM_ANDROID
 #define REGISTER_FILTER_CLASS(className) \
 class className##Registry { \

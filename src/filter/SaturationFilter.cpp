@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(SaturationFilter)
 
+DEFINE_FILTER_CREATE_METHOD(SaturationFilter)
+
 const std::string kSaturationFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -40,16 +42,6 @@ const std::string kSaturationFragmentShaderString = SHADER_STRING
         gl_FragColor = vec4(mix(greyScaleColor, color.rgb, saturation), color.a);
     }
 );
-
-
-SaturationFilter* SaturationFilter::create() {
-    SaturationFilter* ret = new (std::nothrow) SaturationFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool SaturationFilter::init() {
     if (!initWithFragmentShaderString(kSaturationFragmentShaderString)) return false;

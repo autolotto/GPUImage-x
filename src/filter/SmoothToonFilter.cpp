@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(SmoothToonFilter)
 
+DEFINE_FILTER_CREATE_METHOD(SmoothToonFilter)
+
 SmoothToonFilter::SmoothToonFilter()
 :_gaussianBlurFilter(0)
 ,_toonFilter(0)
@@ -39,15 +41,6 @@ SmoothToonFilter::~SmoothToonFilter() {
         _toonFilter = 0;
     }
     
-}
-
-SmoothToonFilter* SmoothToonFilter::create() {
-    SmoothToonFilter* ret = new (std::nothrow) SmoothToonFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
 }
 
 bool SmoothToonFilter::init() {

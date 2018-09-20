@@ -22,14 +22,7 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(EmbossFilter)
 
-EmbossFilter* EmbossFilter::create() {
-    EmbossFilter* ret = new (std::nothrow) EmbossFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+DEFINE_FILTER_CREATE_METHOD(EmbossFilter)
 
 bool EmbossFilter::init() {
     if (!Convolution3x3Filter::init()) return false;

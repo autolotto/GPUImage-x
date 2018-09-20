@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(ContrastFilter)
 
+DEFINE_FILTER_CREATE_METHOD(ContrastFilter)
+
 const std::string kContrastFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -34,16 +36,6 @@ const std::string kContrastFragmentShaderString = SHADER_STRING
         gl_FragColor = vec4(((color.rgb - vec3(0.5)) * contrast + vec3(0.5)), color.a);
     }
 );
-
-
-ContrastFilter* ContrastFilter::create() {
-    ContrastFilter* ret = new (std::nothrow) ContrastFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool ContrastFilter::init() {
     if (!initWithFragmentShaderString(kContrastFragmentShaderString)) return false;

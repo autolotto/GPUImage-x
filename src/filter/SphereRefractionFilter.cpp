@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(SphereRefractionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(SphereRefractionFilter)
+
 const std::string kSphereRefractionShaderString = SHADER_STRING
 (
  
@@ -48,18 +50,7 @@ const std::string kSphereRefractionShaderString = SHADER_STRING
      
      gl_FragColor = texture2D(colorMap, (refractedVector.xy + 1.0) * 0.5) * checkForPresenceWithinSphere;
  }
-
 );
-
-
-SphereRefractionFilter* SphereRefractionFilter::create() {
-    SphereRefractionFilter* ret = new (std::nothrow) SphereRefractionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool SphereRefractionFilter::init() {
     if (!initWithFragmentShaderString(kSphereRefractionShaderString)) return false;

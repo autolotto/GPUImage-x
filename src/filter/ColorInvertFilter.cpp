@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(ColorInvertFilter)
 
+DEFINE_FILTER_CREATE_METHOD(ColorInvertFilter)
+
 const std::string kColorInvertFragmentShaderString = SHADER_STRING
 (
  
@@ -34,16 +36,6 @@ const std::string kColorInvertFragmentShaderString = SHADER_STRING
         gl_FragColor = vec4((1.0 - color.rgb), color.a);
     }
 );
-
-
-ColorInvertFilter* ColorInvertFilter::create() {
-    ColorInvertFilter* ret = new (std::nothrow) ColorInvertFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool ColorInvertFilter::init() {
     if (!Filter::initWithFragmentShaderString(kColorInvertFragmentShaderString)) return false;

@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(HalftoneFilter)
 
+DEFINE_FILTER_CREATE_METHOD(HalftoneFilter)
+
 const std::string kHalftoneFragmentShaderString = SHADER_STRING
 (
  uniform highp float pixelSize;
@@ -47,18 +49,7 @@ const std::string kHalftoneFragmentShaderString = SHADER_STRING
      
      gl_FragColor = vec4(vec3(checkForPresenceWithinDot), 1.0);
  }
- );
-
-
-
-HalftoneFilter* HalftoneFilter::create() {
-    HalftoneFilter* ret = new (std::nothrow) HalftoneFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool HalftoneFilter::init() {
     if (!initWithFragmentShaderString(kHalftoneFragmentShaderString)) return false;

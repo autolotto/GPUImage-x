@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(NonMaximumSuppressionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(NonMaximumSuppressionFilter)
+
 const std::string kNonMaximumSuppressionShaderString = SHADER_STRING
 (
  precision mediump float;
@@ -65,17 +67,7 @@ const std::string kNonMaximumSuppressionShaderString = SHADER_STRING
      gl_FragColor = vec4((centerColor.rgb * step(maxValue, centerColor.r) * multiplier), 1.0);
 
  }
- );
-
-
-NonMaximumSuppressionFilter* NonMaximumSuppressionFilter::create() {
-    NonMaximumSuppressionFilter* ret = new (std::nothrow) NonMaximumSuppressionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool NonMaximumSuppressionFilter::init() {
     if (initWithFragmentShaderString(kNonMaximumSuppressionShaderString)) {

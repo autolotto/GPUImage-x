@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(ColorMatrixFilter)
 
+DEFINE_FILTER_CREATE_METHOD(ColorMatrixFilter)
+
 const std::string kColorMatrixFragmentShaderString = SHADER_STRING
 (
  uniform sampler2D colorMap;
@@ -51,22 +53,13 @@ const std::string kBrightnessFragmentShaderString = SHADER_STRING
      lowp vec4 color = texture2D(colorMap, vTexCoord);
      gl_FragColor = vec4((color.rgb + vec3(brightness)), color.w);
  }
- );
+);
 
 ColorMatrixFilter::ColorMatrixFilter()
 :_intensity(1.0)
 ,_colorMatrix(Matrix4::IDENTITY)
 {
 
-}
-
-ColorMatrixFilter* ColorMatrixFilter::create() {
-    ColorMatrixFilter* ret = new (std::nothrow) ColorMatrixFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
 }
 
 bool ColorMatrixFilter::init() {

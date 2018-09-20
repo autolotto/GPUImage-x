@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(DirectionalNonMaximumSuppressionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(DirectionalNonMaximumSuppressionFilter)
+
 const std::string kDirectionalNonmaximumSuppressionFragmentShaderString = SHADER_STRING
 (
  precision mediump float;
@@ -50,17 +52,7 @@ const std::string kDirectionalNonmaximumSuppressionFragmentShaderString = SHADER
      
      gl_FragColor = vec4(multiplier, multiplier, multiplier, 1.0);
  }
- );
-
-
-DirectionalNonMaximumSuppressionFilter* DirectionalNonMaximumSuppressionFilter::create() {
-    DirectionalNonMaximumSuppressionFilter* ret = new (std::nothrow) DirectionalNonMaximumSuppressionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool DirectionalNonMaximumSuppressionFilter::init() {
     if (initWithFragmentShaderString(kDirectionalNonmaximumSuppressionFragmentShaderString)) {

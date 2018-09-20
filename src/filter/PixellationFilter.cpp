@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(PixellationFilter)
 
+DEFINE_FILTER_CREATE_METHOD(PixellationFilter)
+
 const std::string kPixellationFragmentShaderString = SHADER_STRING
 (
  uniform highp float pixelSize;
@@ -36,17 +38,7 @@ const std::string kPixellationFragmentShaderString = SHADER_STRING
      highp vec2 samplePos = floor(vTexCoord / pixelSizeVec) * pixelSizeVec + 0.5 * pixelSizeVec;
      gl_FragColor = texture2D(colorMap, samplePos);
  }
- );
-
-
-PixellationFilter* PixellationFilter::create() {
-    PixellationFilter* ret = new (std::nothrow) PixellationFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool PixellationFilter::init() {
     if (!initWithFragmentShaderString(kPixellationFragmentShaderString)) return false;

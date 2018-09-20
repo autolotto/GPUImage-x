@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(LuminanceRangeFilter)
 
+DEFINE_FILTER_CREATE_METHOD(LuminanceRangeFilter)
+
 const std::string kLuminanceRangeFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -39,15 +41,6 @@ const std::string kLuminanceRangeFragmentShaderString = SHADER_STRING
         gl_FragColor = vec4((color.rgb) + (luminanceRatio), color.a);
     }
 );
-
-LuminanceRangeFilter* LuminanceRangeFilter::create() {
-    LuminanceRangeFilter* ret = new (std::nothrow) LuminanceRangeFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool LuminanceRangeFilter::init() {
     if (!initWithFragmentShaderString(kLuminanceRangeFragmentShaderString)) return false;

@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(SobelEdgeDetectionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(SobelEdgeDetectionFilter)
+
 //   Code from "Graphics Shaders: Theory and Practice" by M. Bailey and S. Cunningham
 const std::string kSobelEdgeDetectionFragmentShaderString = SHADER_STRING
 (
@@ -74,16 +76,6 @@ SobelEdgeDetectionFilter::~SobelEdgeDetectionFilter() {
         _sobelEdgeDetectionFilter->release();
         _sobelEdgeDetectionFilter = 0;
     }
-}
-
-SobelEdgeDetectionFilter* SobelEdgeDetectionFilter::create() {
-    SobelEdgeDetectionFilter* ret = new (std::nothrow) SobelEdgeDetectionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    
-    return ret;
 }
 
 bool SobelEdgeDetectionFilter::init() {

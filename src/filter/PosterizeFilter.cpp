@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(PosterizeFilter)
 
+DEFINE_FILTER_CREATE_METHOD(PosterizeFilter)
+
 const std::string kPosterizeFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -35,16 +37,6 @@ const std::string kPosterizeFragmentShaderString = SHADER_STRING
         gl_FragColor = floor((color * colorLevels) + vec4(0.5)) / colorLevels;
     }
 );
-
-
-PosterizeFilter* PosterizeFilter::create() {
-    PosterizeFilter* ret = new (std::nothrow) PosterizeFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool PosterizeFilter::init() {
     if (!initWithFragmentShaderString(kPosterizeFragmentShaderString)) return false;

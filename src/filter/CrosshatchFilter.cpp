@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(CrosshatchFilter)
 
+DEFINE_FILTER_CREATE_METHOD(CrosshatchFilter)
+
 const std::string kCrosshatchFragmentShaderString = SHADER_STRING
 (
  uniform sampler2D colorMap;
@@ -69,18 +71,6 @@ const std::string kCrosshatchFragmentShaderString = SHADER_STRING
  }
 
 );
-
-
-
-
-CrosshatchFilter* CrosshatchFilter::create() {
-    CrosshatchFilter* ret = new (std::nothrow) CrosshatchFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool CrosshatchFilter::init() {
     if (!initWithFragmentShaderString(kCrosshatchFragmentShaderString)) return false;

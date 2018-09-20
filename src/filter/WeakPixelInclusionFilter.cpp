@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(WeakPixelInclusionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(WeakPixelInclusionFilter)
+
 const std::string kWeakPixelInclusionFragmentShaderString = SHADER_STRING
 (
  precision mediump float;
@@ -57,17 +59,7 @@ const std::string kWeakPixelInclusionFragmentShaderString = SHADER_STRING
      
      gl_FragColor = vec4(vec3(sumTest * pixelTest), 1.0);
  }
- );
-
-
-WeakPixelInclusionFilter* WeakPixelInclusionFilter::create() {
-    WeakPixelInclusionFilter* ret = new (std::nothrow) WeakPixelInclusionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool WeakPixelInclusionFilter::init() {
     if (initWithFragmentShaderString(kWeakPixelInclusionFragmentShaderString)) {

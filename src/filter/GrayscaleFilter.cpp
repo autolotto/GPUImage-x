@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(GrayscaleFilter)
 
+DEFINE_FILTER_CREATE_METHOD(GrayscaleFilter)
+
 const std::string kGrayscaleFragmentShaderString = SHADER_STRING
 (
  precision highp float;
@@ -38,16 +40,6 @@ const std::string kGrayscaleFragmentShaderString = SHADER_STRING
      gl_FragColor = vec4(vec3(luminance), color.a);
  }
 );
-
-
-GrayscaleFilter* GrayscaleFilter::create() {
-    GrayscaleFilter* ret = new (std::nothrow) GrayscaleFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool GrayscaleFilter::init() {
     if (Filter::initWithFragmentShaderString(kGrayscaleFragmentShaderString)) {

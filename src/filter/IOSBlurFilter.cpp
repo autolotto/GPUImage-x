@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(IOSBlurFilter)
 
+DEFINE_FILTER_CREATE_METHOD(IOSBlurFilter)
+
 IOSBlurFilter::IOSBlurFilter()
 :_saturationFilter(0)
 ,_blurFilter(0)
@@ -44,15 +46,6 @@ IOSBlurFilter::~IOSBlurFilter() {
         _luminanceRangeFilter->release();
         _luminanceRangeFilter = 0;
     }
-}
-
-IOSBlurFilter* IOSBlurFilter::create() {
-    IOSBlurFilter* ret = new (std::nothrow) IOSBlurFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
 }
 
 bool IOSBlurFilter::init() {

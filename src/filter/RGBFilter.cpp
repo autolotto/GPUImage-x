@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(RGBFilter)
 
+DEFINE_FILTER_CREATE_METHOD(RGBFilter)
+
 const std::string kRGBFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -36,16 +38,6 @@ const std::string kRGBFragmentShaderString = SHADER_STRING
         gl_FragColor = vec4(color.r * redAdjustment, color.g * greenAdjustment, color.b * blueAdjustment, color.a);
     }
 );
-
-
-RGBFilter* RGBFilter::create() {
-    RGBFilter* ret = new (std::nothrow) RGBFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool RGBFilter::init() {
     if (!initWithFragmentShaderString(kRGBFragmentShaderString)) return false;

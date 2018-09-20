@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(DirectionalSobelEdgeDetectionFilter)
 
+DEFINE_FILTER_CREATE_METHOD(DirectionalSobelEdgeDetectionFilter)
+
 const std::string kDirectionalSobelEdgeDetectionFragmentShaderString = SHADER_STRING
 (
  precision mediump float;
@@ -62,17 +64,7 @@ const std::string kDirectionalSobelEdgeDetectionFragmentShaderString = SHADER_ST
      
      gl_FragColor = vec4(gradientMagnitude, normalizedDirection.x, normalizedDirection.y, 1.0);
  }
- );
-
-
-DirectionalSobelEdgeDetectionFilter* DirectionalSobelEdgeDetectionFilter::create() {
-    DirectionalSobelEdgeDetectionFilter* ret = new (std::nothrow) DirectionalSobelEdgeDetectionFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
+);
 
 bool DirectionalSobelEdgeDetectionFilter::init() {
     if (initWithFragmentShaderString(kDirectionalSobelEdgeDetectionFragmentShaderString)) {

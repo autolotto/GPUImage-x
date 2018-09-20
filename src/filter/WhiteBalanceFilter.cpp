@@ -22,6 +22,8 @@ USING_NS_GI
 
 REGISTER_FILTER_CLASS(WhiteBalanceFilter)
 
+DEFINE_FILTER_CREATE_METHOD(WhiteBalanceFilter)
+
 const std::string kWhiteBalanceFragmentShaderString = SHADER_STRING
 (
     uniform sampler2D colorMap;
@@ -47,16 +49,6 @@ const std::string kWhiteBalanceFragmentShaderString = SHADER_STRING
 
     }
 );
-
-
-WhiteBalanceFilter* WhiteBalanceFilter::create() {
-    WhiteBalanceFilter* ret = new (std::nothrow) WhiteBalanceFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool WhiteBalanceFilter::init() {
     if (!initWithFragmentShaderString(kWhiteBalanceFragmentShaderString)) return false;

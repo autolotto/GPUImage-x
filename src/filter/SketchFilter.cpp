@@ -22,6 +22,9 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(SketchFilter)
 
+DEFINE_FILTER_CREATE_METHOD(SketchFilter)
+DEFINE_FILTER_CREATE_METHOD(_SketchFilter)
+
 const std::string kSketchFilterFragmentShaderString = SHADER_STRING
 (
  precision mediump float;
@@ -77,16 +80,6 @@ SketchFilter::~SketchFilter()
     }
 }
 
-SketchFilter* SketchFilter::create() {
-    SketchFilter* ret = new (std::nothrow) SketchFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    
-    return ret;
-}
-
 bool SketchFilter::init() {
     if (!FilterGroup::init()) {
         return false;
@@ -104,16 +97,6 @@ bool SketchFilter::init() {
     });
     
     return true;
-}
-
-_SketchFilter* _SketchFilter::create() {
-    _SketchFilter* ret = new (std::nothrow) _SketchFilter();
-    if (!ret || !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    
-    return ret;
 }
 
 bool _SketchFilter::init() {

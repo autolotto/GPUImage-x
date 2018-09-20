@@ -22,6 +22,8 @@ NS_GI_BEGIN
 
 REGISTER_FILTER_CLASS(HSBFilter)
 
+DEFINE_FILTER_CREATE_METHOD(HSBFilter)
+
 /* Matrix algorithms adapted from http://www.graficaobscura.com/matrix/index.html
  
  Note about luminance vector values below from that page:
@@ -35,16 +37,6 @@ REGISTER_FILTER_CLASS(HSBFilter)
 #define RLUM (0.3f)
 #define GLUM (0.59f)
 #define BLUM (0.11f)
-
-
-HSBFilter* HSBFilter::create() {
-    HSBFilter* ret = new (std::nothrow) HSBFilter();
-    if (ret && !ret->init()) {
-        delete ret;
-        ret = 0;
-    }
-    return ret;
-}
 
 bool HSBFilter::init() {
     if (!ColorMatrixFilter::init()) return false;

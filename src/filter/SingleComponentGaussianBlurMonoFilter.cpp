@@ -61,7 +61,7 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedVertexShade
     }
     
     // 3. From these weights we calculate the offsets to read interpolated values from
-    int numberOfOptimizedOffsets = MIN(radius / 2 + (radius % 2), 7);
+    int numberOfOptimizedOffsets = std::min(radius / 2 + (radius % 2), 7);
     GLfloat optimizedGaussianOffsets[numberOfOptimizedOffsets];
     
     for (int i = 0; i < numberOfOptimizedOffsets; ++i) {
@@ -127,7 +127,7 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     
     // 3. From these weights we calculate the offsets to read interpolated values from
     int trueNumberOfOptimizedOffsets = radius / 2 + (radius % 2);
-    int numberOfOptimizedOffsets = MIN(trueNumberOfOptimizedOffsets, 7);
+    int numberOfOptimizedOffsets = std::min(trueNumberOfOptimizedOffsets, 7);
 
     std::string shaderStr =
     str_format("\
